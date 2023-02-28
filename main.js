@@ -73,5 +73,31 @@ const idInvalidCardCompanies = invalidCards => {
 
 
 
+let convertToNum = num =>String(num).split('').map(Number);
 
-
+let checkCardLive = num => {
+  let cardNumber = convertToNum(num);
+  let cardCompany = '';
+  switch (cardNumber[0]) {
+    case 3:
+    cardCompany = 'American Express';
+    break;
+    case 4:
+    cardCompany = 'Visa';
+    break;
+    case 5:
+    cardCompany = 'MasterCard';
+    break;
+    case 6:
+    cardCompany = 'Discover';
+    break;
+  }
+  if(validateCred(cardNumber)){
+  console.log(`Tu tarjeta ${cardCompany} es VÁLIDA.`)
+  } else {
+    console.log('Tarjeta Inválida. Verifica tu número.')
+  }
+}
+// CopyPaste for testing: 4539677908016808
+const prompt = require('prompt-sync')();
+checkCardLive(prompt('Ingresa tu numero de tarjeta, sin espacios: '));
